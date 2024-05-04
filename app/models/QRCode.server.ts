@@ -1,12 +1,8 @@
-// import qrcode from "qrcode";
-// import invariant from "tiny-invariant";
+import qrcode from "qrcode";
+import invariant from "tiny-invariant";
 import db from "../db.server";
 
-
-// GraphQLクエリを実行する関数の型の例
-type GraphQLFunction = (query: string, variables?: Record<string, any>) => Promise<any>;
-
-export async function getQRCode(id: any, graphql: GraphQLFunction) {
+export async function getQRCode(id, graphql) {
   const qrCode = await db.qRCode.findFirst({ where: { id } });
 
   if (!qrCode) {
